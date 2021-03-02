@@ -32,14 +32,24 @@ class ToDo extends Component{
 
       if(taskText.length > 3 && key === 'Enter') {
         const { addTask } = this.props;
-
         addTask((new Date()).getTime(), taskText, false);
-       
         this.setState({
           taskText: ''
-        })
+        });
       }
 
+    }
+    addTaskOnClick = () => {
+      const { taskText } = this.state;
+
+      if(taskText.length > 3){
+        const { addTask } = this.props;
+        addTask((new Date()).getTime(), taskText, false);
+        this.setState({
+          taskText: ''
+        });
+      }
+      
     }
 
     componentDidMount(){
@@ -77,7 +87,7 @@ class ToDo extends Component{
         } else {
         return ( 
           <div className="todo-wrapper">
-            <Form onKeyPress={this.addTask} onChange={this.handlerInputChange} value={taskText} />
+            <Form onKeyPress={this.addTask} onClick={this.addTaskOnClick} onChange={this.handlerInputChange} value={taskText} />
             {isTasksExist && <TodoList tasksList={filteredTasks} completedTask={completedTask} removeTask={removeTask} />}
             {isTasksExist && <Filters changeFilter={changeFilter} amounts={taskCounter} activeFilter={filters} />}
           </div>

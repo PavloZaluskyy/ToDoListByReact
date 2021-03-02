@@ -9,25 +9,6 @@ if(!TASKS || !TASKS.tasks || !TASKS.tasks.length){
     }
 }
 
-
-// let TASKS = [
-//     {
-//         id: 1,
-//         title: 'Test 1',
-//         completed: true
-//     },
-//     {
-//         id: 2,
-//         title: 'Test 2',
-//         completed: false
-//     },
-//     {
-//         id: 3,
-//         title: 'Test 3',
-//         completed: true
-//     }
-// ];
-
 const tasks = (state = TASKS.tasks, {id, title, completed, type}) => {   
      switch (type){
         case ADD_TASK: 
